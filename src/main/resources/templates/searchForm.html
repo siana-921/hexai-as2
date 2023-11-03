@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>searchForm</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="/js/result.js"></script>
+</head>
+<body>
+    <h1>검색</h1>
+    <form id="searchForm" method="post">
+        <label for="searchType">검색 조건:</label>
+        <select id="searchType" name="searchType">
+            <option value="code">코드</option>
+            <option value="name">이름</option>
+            <option value="location">위치</option>
+        </select>
+
+        <input type="text" id="searchInput" name="query" placeholder="검색어를 입력하세요">
+
+        <button type="submit">검색</button>
+    </form>
+    <div id="searchResults">...</div>
+
+</body>
+</html>
