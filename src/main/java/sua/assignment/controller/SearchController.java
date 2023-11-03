@@ -19,15 +19,15 @@ public class SearchController {
     @PostMapping("/search")
     public ResponseEntity<Object> searchForm(
             @RequestParam(name
-                    = "query", required = false, defaultValue = "") String query,
-            @RequestParam(name = "searchType", required = false, defaultValue = "code") String searchType,
+                    = "category", required = true, defaultValue = "code") String category,
+            @RequestParam(name = "val", required = true, defaultValue = "") String val,
             Model model
     ){
         //AirportDTO[] json = restTemplate.getForObject(Constants.JSON_URL, AirportDTO[].class);
 
         RestTemplate restTemplate = new RestTemplate();
         String json = restTemplate.getForObject(Constants.JSON_URL, String.class);
-        model.addAttribute("jsonData", json);
+        //model.addAttribute("jsonData", json);
 
         return new ResponseEntity<>(json, HttpStatus.OK);
 
