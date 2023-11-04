@@ -9,11 +9,11 @@
 <body>
     <h1>검색</h1>
     <form id="searchForm" method="post">
-        <label for="searchType">검색 조건:</label>
-        <select id="searchType" name="searchType">
-            <option value="code">코드</option>
+        <span>검색 조건:</span>
+        <label for="searchType"></label><select id="searchType" name="searchType">
+            <option value="iata">코드</option>
             <option value="name">이름</option>
-            <option value="location">위치</option>
+            <option value="city">도시</option>
         </select>
 
         <input type="text" id="searchInput" name="query" placeholder="검색어를 입력하세요">
