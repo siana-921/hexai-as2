@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
 
     searchForm.addEventListener("submit", async function(e) {
-        e.preventDefault(); //폼 기본 동작 막기
+        e.preventDefault(); //폼 기본 동작 막기..
 
         const form = document.getElementById("searchForm");
         const input = document.getElementById("searchInput");
@@ -24,13 +24,8 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
 
-        console.log(category, val);
-
         try {
             const response = await axios.post("/search", null, query);
-            console.log(response.data);
-            console.log(response);
-            console.log(typeof response.data);
 
             const searchedArray = getValuesArray(response.data);
 
@@ -39,8 +34,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 const searchedValueHTML = valueToHTML(item);
 
                 div.innerHTML = `
-                    <div class="w-full mb-4">
-                        <p class="w-full p-3 text-center text-xl bolder bg-slate-300">${item.icao}</p>
+                    <div class="w-full mb-4 border-b-4 border-slate-200">
+                        <p class="w-full p-3 text-center text-xl bolder bg-slate-200">${item.icao}</p>
                         <div class="w-full">
                             ${searchedValueHTML}
                         </div>
@@ -49,9 +44,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 results.appendChild(div);
             });
 
-            //const jsonText = JSON.stringify(response.data, null, 2);
-            //results.textContent = jsonText;
-
         } catch (error) {
             console.error("에러 발생:", error);
         }
@@ -59,8 +51,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const getValuesArray = (searchedData) => {
         const res = Object.values(searchedData);
-
-        console.log(res);
         return res;
     }
 
@@ -70,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function() {
         keys.forEach((key)=>{
             res +=
                 `<div class="flex flex-row w-full">
-                    <p class="w-1/6 min-w-[100px] border-r border-slate-400 p-2">${key.toUpperCase()}</p>
+                    <p class="w-1/6 min-w-[100px] border-r border-slate-200 p-2">${key.toUpperCase()}</p>
                     <p class="flex-1 p-2">${item[key]}</p>
                 </div>`
         });

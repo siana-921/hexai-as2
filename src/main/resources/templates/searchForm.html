@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>searchForm</title>
+    <title>여행 가고싶다..</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script type="module" src="/js/result.js"></script>
 </head>
 <body>
-    <p class="text-[3.2rem] p-2 bolder w-full text-center">공항 검색</p>
+    <p class="text-[3.2rem] p-2 bolder w-full text-center">✈️ 공항 검색 ✈️</p>
     <div class="w-full p-8 bg-sky-400 flex items-center text-lg">
         <form class="mx-auto" id="searchForm" method="post">
             <label for="searchType"></label>
@@ -23,7 +23,14 @@
             <button class="pt-2 pb-2 pr-8 pl-8 rounded-xl bg-white" type="submit">검색</button>
         </form>
     </div>
-    <div id="searchResults" class="pt-8">...</div>
+    <div id="searchResults" class="pt-8">
+        <div name="default" class="text-center pt-4">
+            <p class="p-4">안녕하세요 ?!</p>
+            <p>검색조건과 검색어를 입력하고 검색 버튼을 눌러주세요</p>
+            <p>부분 검색을 지원하며 검색어는 공백과 대소문자를 구분하지 않습니다. 👽</p>
+            <p class="text-slate-300 pt-8">근데 한글로 검색하시면 안돼요 ㅋㅋ</p>
+        </div>
+    </div>
 
 </body>
 </html>

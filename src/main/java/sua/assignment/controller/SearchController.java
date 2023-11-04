@@ -13,9 +13,7 @@ import sua.assignment.model.AirportDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -51,27 +49,6 @@ public class SearchController {
         return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    /*
-        ObjectMapper objectMapper = new ObjectMapper();
-        Map<String, AirportDTO> airportData = objectMapper.readValue(json, new TypeReference<Map<String, AirportDTO>>() {});
-
-        // 검색 조건에 따라 검색 결과를 저장할 리스트
-        List<AirportDTO> searchResults = new ArrayList<>();
-
-        for (AirportDTO airport : airportData.values()) {
-            // 여기에서 검색 조건에 따라 필터링하고 결과를 검색Results 리스트에 추가
-            if (category.equals("code") && airport.getIcao().equalsIgnoreCase(val)) {
-                searchResults.add(airport);
-            } else if (category.equals("name") && airport.getName().contains(val)) {
-                searchResults.add(airport);
-            } else if (category.equals("country") && airport.getCountry().equalsIgnoreCase(val)) {
-                searchResults.add(airport);
-            }
-        }
-
-*/
-        //return new ResponseEntity<>(json, HttpStatus.OK);
-
     }
 
     public Map<String, AirportDTO> fetchDataFromJson() {
@@ -106,6 +83,7 @@ public class SearchController {
                 fieldValue = airport.getCity().toLowerCase().replaceAll("\\s", "");
             }
 
+            //contains로 하니까 일부만 맞아도 검색되넹?
             if (fieldValue.contains(val)) {
                 searchResults.put(entry.getKey(), airport);
             }
