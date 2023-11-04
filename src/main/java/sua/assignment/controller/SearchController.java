@@ -92,19 +92,25 @@ public class SearchController {
     public Map<String, AirportDTO> searchData(Map<String, AirportDTO> airports, String category, String val) {
         Map<String, AirportDTO> searchResults = new HashMap<>();
 
+        val = val.toLowerCase().replaceAll("\\s", "");
+
         for (Map.Entry<String, AirportDTO> entry : airports.entrySet()) {
             AirportDTO airport = entry.getValue();
 
-            if (category.equals("iata") && airport.getIata().equalsIgnoreCase(val)) {
-                searchResults.put(entry.getKey(), airport);
-            }else if (category.equals("name") && airport.getName().equalsIgnoreCase(val)) {
-                searchResults.put(entry.getKey(), airport);
-            }else if (category.equals("city") && airport.getCity().equalsIgnoreCase(val)) {
+            String fieldValue = "";
+            if (category.equals("iata")) {
+                fieldValue = airport.getIata().toLowerCase().replaceAll("\\s", "");
+            } else if (category.equals("name")) {
+                fieldValue = airport.getName().toLowerCase().replaceAll("\\s", "");
+            } else if (category.equals("city")) {
+                fieldValue = airport.getCity().toLowerCase().replaceAll("\\s", "");
+            }
+
+            if (fieldValue.contains(val)) {
                 searchResults.put(entry.getKey(), airport);
             }
         }
 
-        
         return searchResults;
     }
 
