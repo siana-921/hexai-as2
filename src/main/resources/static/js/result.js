@@ -8,9 +8,16 @@ document.addEventListener("DOMContentLoaded", function() {
         const form = document.getElementById("searchForm");
         const input = document.getElementById("searchInput");
         const results = document.getElementById("searchResults");
-        const category = document.getElementById("searchType").value;
 
+        const category = document.getElementById("searchType").value;
         const val = input.value;
+
+        console.log(category)
+
+        if(category==="none" || !val){
+            results.textContent="검색 조건과 검색어를 입력해 주세요.";
+            return 0;
+        }
 
         const query = {
             params: {
@@ -25,14 +32,23 @@ document.addEventListener("DOMContentLoaded", function() {
             const response = await axios.post("/search", null, query);
             console.log(response.data);
             console.log(response);
-            console.log("?dpd");
+            console.log(typeof response.data);
+
+            getValuesArray(response.data);
 
             const jsonText = JSON.stringify(response.data, null, 2);
-
-            searchResults.textContent = jsonText;
+            results.textContent = jsonText;
 
         } catch (error) {
             console.error("에러 발생:", error);
         }
     });
+
+    const getValuesArray = (searchedData) => {
+        const res = Object.values(searchedData);
+
+        console.log(res);
+        return res;
+    }
+
 });
